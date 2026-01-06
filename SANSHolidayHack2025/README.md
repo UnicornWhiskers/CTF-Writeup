@@ -4,27 +4,11 @@ Return of the Dosis Neighborhood. Now in optional isometric style!
 
 Challenges:
 
-- [Holiday Hack Orientation](#holiday-hack-orientation)
-- [Its All About Defang](#its-all-about-defang)
-- [Neighborhood WAtch Bypass](#neighborhood-watch-bypass)
-- [Santa's Gift-Tracking Service Port Mystery](#santas-gift-tracking-service-port-mystery)
-- [Visual Networking Thinger](#visual-networking-thinger)
-- [Visual Firewall Thinger](#visual-firewall-thinger)
-- [Intro to Nmap](#intro-to-nmap)
-- [Blob Storage Challenge in the Neighborhood](#blob-storage-challenge-in-the-neighborhood)
-- [Spare Key](#spare-key)
-- [The Open Door](#the-open-door)
-- [Owner](#owner)
-Act II
-- [Retro Recovery](#retro-recovery)
-- [Mail Detective](#mail-detective)
-- [IDORable Bistro](#idorable-bistro)
-- [Dosis Network Down](#dosis-network-down)
-- [Rogue Gnome Identity Provider](#rogue-gnome-identity-provider)
-- [Quantgnome Leap](#quantgnome-leap)
-- [Going in Reverse](#going-in-reverse)
+
+
+**Act III**
+
 - [Gnome Tea](#gnome-tea)
-Act III
 - Hack-a-Gnome (incomplete)
 - [Snowcat RCE & Priv Esc](#snowcat-rce--priv-esc)
 - [Schrodinger's Scope](#schrodingers-scope)
@@ -35,97 +19,10 @@ Act III
 
 # Detailed Solutions
 
-## Holiday Hack Orientation
-## Its All About Defang
-## Neighborhood WAtch Bypass
-## Santa's Gift-Tracking Service Port Mystery
-## Visual Networking THinger
-## Visual Firewall Thinger
-## Intro to Nmap
-## Blob Storage Challenge in the Neighborhood
-## Spare Key
-
-## The Open Door
-
-### Background
-### Hints
-### Solution
-
-[Return to top](#sans-holiday-hack-challenge-2025)
-
-
-## Owner
-
-### Background
-### Hints
-### Solution
-
-[Return to top](#sans-holiday-hack-challenge-2025)
-
-
-## Retro Recovery
-
-### Background
-### Hints
-### Solution
-
-[Return to top](#sans-holiday-hack-challenge-2025)
-
-
-## Mail Detective
-
-### Background
-### Hints
-### Solution
-
-[Return to top](#sans-holiday-hack-challenge-2025)
-
-
-## IDORable Bistro
-
-### Background
-### Hints
-### Solution
-
-[Return to top](#sans-holiday-hack-challenge-2025)
-
-
-## Dosis Network Down
-
-### Background
-### Hints
-### Solution
-
-[Return to top](#sans-holiday-hack-challenge-2025)
-
-## Rogue Gnome Identity Provider
-
-### Background
-### Hints
-### Solution
-
-[Return to top](#sans-holiday-hack-challenge-2025)
-
-## Quantgnome Leap
-
-### Background
-### Hints
-### Solution
-
-[Return to top](#sans-holiday-hack-challenge-2025)
-
-## Going in Reverse
-
-### Background
-### Hints
-### Solution
-
-[Return to top](#sans-holiday-hack-challenge-2025)
-
 ## Gnome Tea
 Enter the apartment building near 24-7 and help Thomas infiltrate the GnomeTea social network and discover the secret agent passphrase.
 
-I loved how this challenge took shape.  I had my head in the sand so missed the comrpomise of the Tea website.  Loved how the the gome tea icon and color scheme was gnomified copy of the tea icon and site.
+I loved how this challenge took shape.  I had my head in the sand so missed the comrpomise of the Tea website this was a great way to learn about it! 
 
 ### Background
 
