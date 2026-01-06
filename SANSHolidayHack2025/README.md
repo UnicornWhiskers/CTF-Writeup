@@ -4,7 +4,10 @@ Return of the Dosis Neighborhood. Now in optional isometric style!
 
 Challenges:
 
+**Act II**
 
+- [Quantgnome Leap](#quantgnome-leap)
+- [Going in Reverse](#going-in-reverse)
 
 **Act III**
 
@@ -18,6 +21,335 @@ Challenges:
 
 
 # Detailed Solutions
+
+## Quantgnome Leap
+Charlie in the hotel has quantum gnome mysteries waiting to be solved. What is the flag that you find?
+
+### Background
+
+                     +---------------------------------+
+                     |  "If we knew the unknown, the   |
+                     |  unknown wouldn't be unknown."  |
+                     |   — Quantum Leap (TV series)    |
+                     +---------------------------------+
+
+                        You observed me, the Gnome...
+                         ...and I observed you back.
+                      Did you see me? Am I here or not?
+                                Both? Neither?
+                     Am I a figment of your imagination?
+              Nay, I am the QuantGnome. Welcome to my challenge!
+                                     ***
+    Like me, the world of cryptography is full of mysteries and surprises.
+     In this challenge, you will learn about the latest advancements in post-quantum cryptography (PQC), and how they can help secure our digital 
+            future against the threats posed by quantum computers.
+
+                I am a reminder that the future is uncertain, 
+                   but with the right tools and knowledge,
+              we can navigate the unknowns and emerge stronger.
+
+                          Take the PQC leap with me!
+
+        I have created a *PQC* key generation program on this system. 
+                             Find and execute it.
+
+### Solution
+
+
+Following the initial statement , we'll find and run the pqc-keygen tool
+
+qgnome@quantgnome_leap:/usr/local/bin$ ls -l
+total 6848
+-rwxr-xr-x    1 root     root       7008584 Oct 28 23:37 pqc-keygen
+qgnome@quantgnome_leap:/usr/local/bin$ ./pqc-keygen
+
+— Summary -> Total algorithms = 28 | ✔ Keys generated = 28
+
+Next, use -t to display key characteristics.
+
+qgnome@quantgnome_leap:/usr/local/bin$ ./pqc-keygen -t
+Algorithm                             Bits  NIST    Kind   
+------------------------------------  ----  ----  ---------
+sphincssha2128fsimple                   32   1          PQC
+sphincssha2256fsimple                   64   5          PQC
+ed25519                                256   0    Classical
+ecdsa-nistp256-sphincssha2128fsimple   288   1       Hybrid
+ecdsa-nistp521-sphincssha2256fsimple   585   5       Hybrid
+falcon512                              897   1          PQC
+ecdsa-nistp256-falcon512              1153   1       Hybrid
+mldsa-44                              1312   0          PQC
+ecdsa-nistp256-mldsa-44               1568   1       Hybrid
+falcon1024                            1793   5          PQC
+mldsa-65                              1952   0          PQC
+rsa-2048                              2048   0    Classical
+ecdsa-nistp521-falcon1024             2314   5       Hybrid
+ecdsa-nistp384-mldsa-65               2336   3       Hybrid
+mldsa-87                              2592   0          PQC
+mayo3                                 2986   3          PQC
+rsa-3072                              3072   1    Classical
+rsa3072-sphincssha2128fsimple         3104   1       Hybrid
+ecdsa-nistp521-mldsa-87               3113   5       Hybrid
+ecdsa-nistp384-mayo3                  3370   3       Hybrid
+rsa3072-falcon512                     3969   1       Hybrid
+rsa-4096                              4096   1    Classical
+rsa3072-mldsa-44                      4384   0       Hybrid
+mayo2                                 4912   1          PQC
+ecdsa-nistp256-mayo2                  5168   1       Hybrid
+mayo5                                 5554   5          PQC
+ecdsa-nistp521-mayo5                  6075   5       Hybrid
+rsa3072-mayo2                         7984   1       Hybrid
+------------------------------------  ----  ----  ---------
+
+You can use 'ssh-keygen -l -f <private key>' to see the bit size of a key.
+
+qgnome@quantgnome_leap:~$for x in `ls -1`; do echo -n  $x': ' & ssh-keygen -l -f $x; done | grep -e 'id*'
+
+id_ed25519: 256 SHA256:q0UQvzwz3W0Zg8Hym0MuLzrP0QPGMOBoOUVUP1l6yR8  (ED25519) (Classical)
+id_rsa-2048: 2048 SHA256:s2LbFzZ/uucK/B+QjCT+rUemfkWD0ymffOmxVXYZcbg  (RSA) (Classical)
+id_rsa-3072: 3072 SHA256:gQOiSpQkeuZ3CSx7sUep9TWi8kk+OTnmsyiLJlQPXVU  (RSA)  (Calssical)
+id_rsa-4096: 4096 SHA256:QFm6usKA0aDIX0NNu0YpeKak5zZjBuEobZ5MzcU70C4  (RSA) (Classical)
+id_ssh-ecdsa-nistp256-falcon512: 1153 SHA256:MtrZ5sm+Zwkl9cTdrgzXmGctcQulJTruFTPgP/4LgHc  (ECDSA_NISTP256_FALCON512)  (Hybrid)
+id_ssh-ecdsa-nistp256-mayo2: 5168 SHA256:X0xpnaB85yPNnyCRUyi/5hlOnO1sp0+BdfsbW4udErU  (ECDSA_NISTP256_MAYO2) (Hybrid)
+id_ssh-ecdsa-nistp256-mldsa-44: 1568 SHA256:AzVOy+MW7cAIJpnh+wcb4qe9D2RMIq6P+83FrINqfA0  (ECDSA_NISTP256_MLDSA-44)  (Hybrid)
+id_ssh-ecdsa-nistp256-sphincssha2128fsimple: 288 SHA256:s3a282ytNNj+/tXi2945L3gBKjmCd6cDVCQxcYSog1Y  (ECDSA_NISTP256_SPHINCSSHA2128FSIMPLE) (Hybrid)
+id_ssh-ecdsa-nistp384-mayo3: 3370 SHA256:/1BkqxF/AESNa9QLI05ZekLM7Fh4TrJSmzL+om72dX4  (ECDSA_NISTP384_MAYO3) (Hybrid)
+id_ssh-ecdsa-nistp384-mldsa-65: 2336 SHA256:Xiv95+u4gB5Fy6jj7kDohbp6onVH8dkrWhGtOzvavgk  (ECDSA_NISTP384_MLDSA-65) (Hybrid)
+id_ssh-ecdsa-nistp521-falcon1024: 2314 SHA256:SLncID4/tqJVStNua3VYhpCsWy1djWnEkV9dug0JJRc  (ECDSA_NISTP521_FALCON1024)  (Hybrid)
+id_ssh-ecdsa-nistp521-mayo5: 6075 SHA256:uF7Pn/X0tlk90KYQONo97Gf8qmML+muR+fA6KUidzbo  (ECDSA_NISTP521_MAYO5) (Hybrid)
+id_ssh-ecdsa-nistp521-mldsa-87: 3113 SHA256:w4wc6J/zDblszZSvlPwWqXiR8S3NMYaH2QvqTBTO/3A  (ECDSA_NISTP521_MLDSA-87) (Hybrid)
+id_ssh-ecdsa-nistp521-sphincssha2256fsimple: 585 SHA256:zMdFC/FWCIm74TS1xLiiEGB7B1FJ2sGVdhu92d9Az0E  (ECDSA_NISTP521_SPHINCSSHA2256FSIMPLE) (Hybrid)
+id_ssh-falcon1024: 1793 SHA256:rbl58C2r2lXkwu2AiJch6eQptdQYyY2euVM7KjbLoBU  (FALCON1024) (PQC)
+id_ssh-falcon512: 897 SHA256:noGYozdpkK8xPiwOZzrbMl/RKi5vYM9Bq3Nk4gHwYD8  (FALCON512) (PQC)
+id_ssh-mayo2: 4912 SHA256:Tglg1HKspDYo1Vk/ykWLvhEvODNM/jPRo7OmWKcCH1k  (MAYO2) *PQC)
+id_ssh-mayo3: 2986 SHA256:bAK4uGTaqgDCiNQTzcsh5qhG0op+hnJyrz7mlgGlxh0  (MAYO3) (PQC)
+id_ssh-mayo5: 5554 SHA256:Clz+hjBee1bWcBtFl11kmFrsjnFAWtF/h3948B/sty8  (MAYO5) (PQC)
+id_ssh-mldsa-44: 1312 SHA256:YqNiaikytP9Q92WZ8Aw30qZN0mTGwDdx5UvtwFRub8s  (MLDSA-44) (PQC)
+id_ssh-mldsa-65: 1952 SHA256:T0gg4UAHFzzy0nvyJpI4Z1Nn/G+S5pkhE7LE6Gd99tM  (MLDSA-65)  (PQC)
+id_ssh-mldsa-87: 2592 SHA256:KlMn2GczO1CLEOEEh2DXvrK3dMsNzJlBkJVS7v6GGNo  (MLDSA-87) (PQC)
+id_ssh-rsa3072-falcon512: 3969 SHA256:+UKLqMDwFmtCj2ZBqmGW56V6tbaEnpwSi4xKLIAj9Jg  (RSA3072_FALCON512) (PQC)
+id_ssh-rsa3072-mayo2: 7984 SHA256:QhfVBe4bDeTfNQXtD7qVLqlylr9liY7JWce1BtF1LZI  (RSA3072_MAYO2) (PQC)
+id_ssh-rsa3072-mldsa-44: 4384 SHA256:+cdi0zMtfkj/oJuwRnbsWjsBmLyKbD1qf+EiBiKDXQc  (RSA3072_MLDSA-44) (PQC)
+id_ssh-rsa3072-sphincssha2128fsimple: 3104 SHA256:lUH4vA/HdkhQU84ODz7MaMXGUgF1IhnTuRz9lyOOuQc  (RSA3072_SPHINCSSHA2128FSIMPLE) (PQC)
+id_ssh-sphincssha2128fsimple: 32 SHA256:oGxKVzK75yyQ0dzvBDcvvJVs7moGwTDrsypkjUtOEyA  (SPHINCSSHA2128FSIMPLE) (PQC)
+id_ssh-sphincssha2256fsimple: 64 SHA256:oNIYF3TkKL53jTMeW9MSffqKqF5QlsFK2HSaA/Aefm8  (SPHINCSSHA2256FSIMPLE) (PQC)
+
+**Next Step SSH inot PQC-server.com**
+
+qgnome@quantgnome_leap:~/.ssh$ cat id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCya6rjv+pf55l/EvEIZW+yhBdrpBrS0rmyysVhdR5Zn2aatLVDhRnNQrH+si6SOaDAOPhOhy037auUveLhEFaQBDQIDqisQ8JoTT/TKhyO97h1IUkl3zmsuw4Kcu1r24L2UJCIVStiJR8vQU8U0Kg5eWuDRev9j+2VMGqF2hmYqssTNbxHNeNbEr1R6/wciSAa3hNwksqE3dYjbr07veKAIcWcsaPMRHmjHrHXdLLwyweXhgzidd3AgzDskub9XdAiXs2B93mFNbQWel+nE2smxUVUY+SLsGXDTXAJu5AqYXrDEJtSuCOCHKXyPX7WCbmAllQo1FB/9K59pI552+K062SvGDCeLEPpcELozU52/awX2yeldNOj7Bn/xXdKpSPHLUrhsj8y/9gVTnS/0q6VLzO8qIwzxdGh7P0OtQqMrSRkTLEHtdOjojTmT70WUpUaVWXf65X8ymY72G49lJjFVAyM6AFBQK/K52f0UTl4XnvkSHwxYNFyk7wGkE07pWU= gnome1
+
+qgnome@quantgnome_leap:~$ chmod 0400 ~/.ssh/id_rsa*
+
+ssh -vi ~/.ssh/id_rsa gnome1@pqc-server.com
+
+###############################################################################################
+
+Welcome, gnome1 user! You made the first leap!
+
+You authenticated with an RSA key, but that isn't very secure in a post-quantum world. RSA 
+depends on large prime numbers, which a quantum computer can easily solve with something like 
+Shor's algorithm.
+
+**Take a look around and see if you can find a way to login to the gnome2 account.**
+
+###############################################################################################
+gnome1@pqc-server:~$ 
+
+
+gnome1@pqc-server:~/.ssh$ ls
+id_ed25519      id_ed25519.pub
+gnome1@pqc-server:~/.ssh$ cat id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKUOOPy0e1+4EzuM5PYc1/lfsXrR9FFDxTxDztvCi0Ce gnome2
+
+cat id_ed25519
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+QyNTUxOQAAACClDjj8tHtfuBM7jOT2HNf5X7F60fRRQ8U8Q87bwotAngAAAJCtuI5arbiO
+WgAAAAtzc2gtZWQyNTUxOQAAACClDjj8tHtfuBM7jOT2HNf5X7F60fRRQ8U8Q87bwotAng
+AAAEBDqIf+Zw9iw64oJTCBvz7efllRaz+jeYf/IRpjmoPaNKUOOPy0e1+4EzuM5PYc1/lf
+sXrR9FFDxTxDztvCi0CeAAAABmdub21lMgECAwQFBgc=
+-----END OPENSSH PRIVATE KEY-----
+
+ssh -i ~/.ssh/id_ed25519 gnome2@localhost
+
+
+###############################################################################################
+
+Welcome, gnome2 user! You made the second leap!
+
+You authenticated with an ED25519 key, smaller than an RSA key, but still not 
+secure in a post-quantum world due to Shor's algorithm.
+
+**Take a look around and see if you can find a way to login to the gnome3 account.**
+
+###############################################################################################
+gnome2@pqc-server:~$ 
+
+gnome2@pqc-server:~$ cd .ssh
+gnome2@pqc-server:~/.ssh$ ls
+id_mayo2      id_mayo2.pub
+gnome2@pqc-server:~/.ssh$ cat id_mayo2.pub
+ssh-mayo2 AAAACXNzaC1tYXlvMgAAEzCnvbGit3qCT/thcAuQO1oD/cTqLsG9gC2XVHMB76bqVfQhR8uR/TdjjiMnB0W4NWgDDar6TC14CyJvfPg17RiWcCXiR3g6lF10+rUpJiz0szKd008tbphVRpN4DNVLJaVNZcJvFCaZ+NtDUa4DkZGxF9k5SgqM3DmPJlj70bQL7NS6FZG5I6hcH07IRgChldcAqvYk4/QcO6mTj8BciTkNJti+jvxq1WaO4gwIJsBKxdqvPkUq7h8KzhBFvI2IcYqzx5UrbePAvTmRC81pLijIeXvQzIcuulQC+LdNKVOjXNvfNV....
+
+ssh -i ~/.ssh/id_mayo2 gnome3@localhost
+
+###############################################################################################
+
+Welcome, gnome3 user! You made the third leap!
+
+You authenticated with a MAYO post-quantum key. 
+A post-quantum cryptographic algorithm with promising results for embedded systems. HOWEVER, 
+use MAYO with caution! Wait for a standardized implementation (if/when that 
+happens).
+
+**Take a look around and see if you can find a way to login to the gnome4 account.**
+
+###############################################################################################
+gnome3@pqc-server:~$ 
+
+ cat id_ecdsa_nistp256_sphincssha2128fsimple.pub
+ssh-ecdsa-nistp256-sphincssha2128fsimple AAAAKHNzaC1lY2RzYS1uaXN0cDI1Ni1zcGhpbmNzc2hhMjEyOGZzaW1wbGUAAAAIbmlzdHAyNTYAAABBBL6fN38B6kQNiS0vAvGeGjAJ7Da2YbpBaAXkeeDJ3CJIUZc8PzNWCfzW5qN8z0RnS1/Hia1jRt6dydqeiVHBa9cAAAAgRAPMBt8y/4/YdBEw9OutMv37HJy50gIQfmzUY5d82Bg= gnome4
+
+ssh -i ~/.ssh/ecdsa-nistp256-sphincssha2128fsimple gnome4@loaclhost
+
+###############################################################################################
+
+Welcome, gnome4 user! You made the fourth leap!
+
+You authenticated with a post-quantum hybrid key! What does that mean? A blended approach with 
+proven classical cryptography and post-quantum cryptography.
+
+In this case, you authenticated with a NIST P-256 ECDSA key (a classical elliptic curve) that 
+also uses post-quantum SPHINCS+ (standardized by NIST in FIPS 205 as SLH-DSA). That makes this 
+key extremely robust. According to NIST, this is a security level 1 key, which means this key 
+is at least as strong as AES128.
+
+Instead of a single exchange/signature (as with RSA or ED25519), this key produces two (one 
+classical and one post-quantum) that are both checked together. If one fails, authentication 
+fails. A hybrid approach is a great first step when testing and implementing post-quantum 
+cryptography, giving organizations 'Quantum Agility'.
+
+**Take a look around and see if you can find a way to login to the admin account.**
+
+###############################################################################################
+gnome4@pqc-server:~$ 
+
+cat id_ecdsa_nistp521_mldsa87.pub
+ssh-ecdsa-nistp521-mldsa-87 AAAAG3NzaC1lY2RzYS1uaXN0cDUyMS1tbGRzYS04NwAAAAhuaXN0cDUyMQAAAIUEAKqZp85lwZsw4xT+CLYfMEkI3k+86rrskh+FGhAoeDzt9xbaDqYVVtDmBKUC/XEr1VwGjtYNKFTPNJveaLxDw......
+
+ssh -i ~/.ssh/id_ecdsa_nistp521_mldsa87 admin@localhost
+
+###############################################################################################
+
+You made the QuantGnome Leap! Your final stop.
+
+You authenticated with another hybrid post-quantum key. What is different about this key? It 
+uses the NIST P-521 elliptic curve (roughly equivalent to a 15360-bit RSA key) paired with 
+ML-DSA-87. According to NIST, ML-DSA-87 is a security level 5 algorithm, which provides the 
+highest security level and is meant for the most secure environments. NIST standardized 
+CRYSTALS-Dilithium as ML-DSA in FIPS 204 with three defined security levels:
+
+- ML-DSA-44: Security Level 2 - At least as strong as SHA256/SHA3-256
+- ML-DSA-65: Security Level 3 - At least as strong as AES192
+- ML-DSA-87: Security Level 5 - At least as strong as AES256
+
+This is one of the strongest hybrid keys available in post-quantum cryptography. 
+The other extremely strong security level 5 algorithms all use a combination of the NIST P-521 
+elliptic curve and one of the following PQC algorithms:
+
+- falcon1024: Falcon (FN-DSA) with a 1024 lattice dimensional size
+- sphincssha2256fsimple: SLH-DSA (SPHINCS+) using SHA2 256 and fast signature 
+generation (hence the 'f' in the algorithm name)
+- mayo5: MAYO-5 is the highest of the four MAYO security levels
+
+This entire build/system is based off of the Linux Foundation's Open Quantum Safe (OQS) 
+initiative. It uses the OQS liboqs library which provides PQC algorithm support.
+You can find out more about the OQS initiative at https://openquantumsafe.org/.
+
+**Next Step: You now have access to a directory in the same location as the SSH**
+**daemon. Time to look around for your final flag.**
+###############################################################################################
+
+ps -ef
+PID   USER     TIME  COMMAND
+    1 qgnome    0:00 -bash
+    7 root      0:00 sshd: /opt/oqs-ssh/sbin/sshd -D -f /opt/oqs-ssh/sshd_config -E /opt/oqs-s
+
+Looks like the ssh daemon is running out of /opt/oqs-ssh/
+
+admin@quantgnome_leap:/opt/oqs-ssh$ ls
+bin                                       ssh_config
+flag                                      ssh_host_ecdsa_nistp521_mldsa-87_key
+key-lookup.log                            ssh_host_ecdsa_nistp521_mldsa-87_key.pub
+key-lookup.sh                             ssh_known_hosts
+moduli                                    sshd_config
+sbin                                      sshd_logfile.log
+scripts                                   user-keys
+share
+admin@quantgnome_leap:/opt/oqs-ssh/flag$ cat flag
+HHC{L3aping_0v3r_Quantum_Crypt0}
+
+**The Flag is HHC{L3aping_0v3r_Quantum_Crypt0}**
+
+[Return to top](#sans-holiday-hack-challenge-2025)
+
+## Going in Reverse
+Kevin in the Retro Store needs help rewinding tech and going in reverse. Extract the flag and enter it here.
+
+### Background
+
+Finding an old Commodore 64 disk with a mysterious BASIC program on it? That's like discovering a digital time capsule. The C64 was an incredible machine for its time - 64KB of RAM seemed like an ocean of possibility back then. I spent countless hours as a kid typing in program listings from Compute! magazine, usually making at least a dozen typos along the way.
+
+The thing about BASIC programs from that era is they were often written by clever programmers who knew how to hide things in plain sight. Sometimes the most interesting discoveries come from reading the code itself rather than watching it execute. It's like being a digital archaeologist - you're not just looking at what the program does, you're understanding how the programmer thought.
+
+Take your time with this one. Those old-school programmers had to be creative within such tight constraints. You'll know the flag by the Christmas phrase that pays.
+
+### Solution
+
+Checkign basic program:
+```
+10 REM *** COMMODORE 64 SECURITY SYSTEM ***
+20 ENC_PASS$ = "D13URKBT"
+30 ENC_FLAG$ = "DSA|auhts*wkfi=dhjwubtthut+dhhkfis+hnkz" ' old "DSA|qnisf`bX_huXariz"
+40 INPUT "ENTER PASSWORD: "; PASS$
+50 IF LEN(PASS$) <> LEN(ENC_PASS$) THEN GOTO 90
+60 FOR I = 1 TO LEN(PASS$)
+70 IF CHR$(ASC(MID$(PASS$,I,1)) XOR 7) <> MID$(ENC_PASS$,I,1) THEN GOTO 90
+80 NEXT I
+85 FLAG$ = "" : FOR I = 1 TO LEN(ENC_FLAG$) : FLAG$ = FLAG$ + CHR$(ASC(MID$(ENC_FLAG$,I,1)) XOR 7) : NEXT I : PRINT FLAG$
+90 PRINT "ACCESS DENIED"
+100 END
+```
+
+We have to step through the code to determine what is happening.
+20 Eeclare encrypted password variable and value
+30 Declare encrypted flag vairable and value
+40 prompt user for a password
+50 Check the length of the user provided password is not equal to the encrytped password length.  If not then print "ACCESS DENIED" and exit
+60 start a loop that will loop the number of characters in teh user ENC_PASS variable
+70 On the next step we take the current character place basedon the loop variable I from the $PASS vaeriable, convert it to ASCII, then BITWISE OR with 7 (00000111) to flip the last 3 bits of the ASCII byte, then convert to CHAR.  This output is compared to the ENC_PASS value and if it is not a match it will print "ACCESS DENIED" and exit
+80 will increment the loop
+85 If the password was successful we'll proceed to decode the ENC_FLAG usign the same operation that was used to test the password against the encrypted password. This produces the decoded FLAG
+
+Here's an example using python:
+
+```
+data = "DSA|auhts*wkfi=dhjwubtthut+dhhkfis+hnkz"
+decoded = ""
+for ch in data:
+  ascii_val = ord(ch)        # convert char → ASCII
+  transformed = ascii_val ^ 7  # bitwise OR with 7
+  decoded += chr(transformed)  # convert back to char
+print(decoded)
+```
+
+Outputs: CTF{frost-plan:compressors,coolant,oil}
+
+the "old" flag when decoded was "CTF{vintage_Xor_fun}"
+
+
+[Return to top](#sans-holiday-hack-challenge-2025)
+
 
 ## Gnome Tea
 Enter the apartment building near 24-7 and help Thomas infiltrate the GnomeTea social network and discover the secret agent passphrase.
